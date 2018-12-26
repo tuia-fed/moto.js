@@ -1,0 +1,20 @@
+@import "./breathe.less";
+@import "./fade-in.less";
+@import "./fade-out.less";
+@import "./tada.less";
+
+.factor(
+  @name, @anime, /* 通用 */
+  @duration, @timing: linear,
+  @delay: 0s, @count: 1) {
+
+  @keyframes @name {
+    @anime();
+  }
+
+  animation-name: @name;
+  animation-duration: @duration;
+  animation-timing-function: @timing;
+  animation-delay: @delay;
+  animation-iteration-count: @count;
+}

@@ -1,0 +1,16 @@
+import {tween} from 'moto.js'
+
+===
+
+tween({
+  from: 0,
+  to: 10
+}).start(v => console.log(v))
+
+===
+
+tween({
+  from: {x: 0, y: 0},
+  to: {x: 10, y: 10},
+  duration: 2
+}).start(v => console.log(v)) // {x: .., y: ..}

@@ -1,0 +1,23 @@
+{
+  "presets": [
+    ["@babel/env", {
+      "useBuiltIns": "usage",
+      "modules": "false",
+      "targets": {"node": 4}
+    }]
+  ],
+
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-private-methods",
+    "@babel/proposal-export-default-from",
+    "@babel/proposal-export-namespace-from",
+    "@babel/syntax-dynamic-import",
+    ["@babel/transform-runtime", {
+      "corejs": false,
+      "helpers": false,
+      "regenerator": true,
+      "useESModules": true
+    }]
+  ]
+}

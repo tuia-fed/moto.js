@@ -1,0 +1,33 @@
+/*
+* name: 指定 keyframe 值，默认：anime-fade-out
+* duration: 动画执行时间(同：animation-duration)，默认：1s
+* tx: 结束时 x 轴偏移，默认：100%
+* ty: 结束时 y 轴偏移，默认：0
+* opacity: 结束时透明度，默认：0
+* anime: 自定义 keyframes，默认：none
+*/
+
+.fade-out(@name: anime-fade-out, @duration: 1s, @tx: 100%,
+  @ty: 0, @opacity: 0,
+  @timing: linear, @count: 1,
+  @delay: 0s, @mode: forwards,
+  @anime: none) {
+
+  @prefab: {
+    from {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+
+    to {
+      transform: translate(@tx, @ty);
+      opacity: @opacity;
+    }
+  };
+
+  .factor(
+    @name,
+    if(isruleset(@anime), @anime, @prefab),
+    @duration
+  );
+}

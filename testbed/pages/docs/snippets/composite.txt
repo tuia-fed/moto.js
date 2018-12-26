@@ -1,0 +1,8 @@
+import {composite, tween} from 'moto.js'
+
+===
+
+composite({
+  position: tween({from: {x: 0, y: 0}, to: {x: 300, y: 300}}),
+  scale: tween({from: 1, to: 2, duration: 5})
+}).start(v => console.log(v))

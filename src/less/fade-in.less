@@ -1,0 +1,38 @@
+/*
+* name: 指定 keyframe 值，默认：anime-fade-in
+* duration: 动画执行时间(同：animation-duration)，默认：1s
+* tx: 初始 x 轴偏移，默认：-100%
+* ty: 初始 y 轴偏移，默认：0
+* opacity: 初始透明度，默认：0
+* anime: 自定义 keyframes，默认：none
+*/
+
+.fade-in(
+  @name: anime-fade-in,
+  @duration: 1s,
+  @tx: -100%, @ty: 0, @opacity: 0,
+  @anime: none) {
+
+  @prefab: {
+    from {
+      transform: translate(@tx, @ty);
+      opacity: @opacity;
+    }
+
+    to {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  };
+
+  .factor(
+    @name,
+    if(isruleset(@anime), @anime, @prefab),
+    @duration
+  );
+}
+
+
+
+
+

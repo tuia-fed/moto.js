@@ -1,0 +1,31 @@
+/*
+* name: 指定 keyframe 值，默认：anime-breathe
+* duration: 动画执行时间(同：animation-duration)，默认：1s
+* min: 最小放缩比，默认：1
+* max: 最大放缩比，默认：1.2
+* anime: 自定义 keframes， 默认：none
+* 可通过 animation-* 属性配置其余项。
+*/
+
+.breathe(
+  @name: anime-breathe,
+  @duration: 1s,
+  @min: 1, @max: 1.2,
+  @anime: none) {
+
+  @prefab: {
+    0%, 100% {
+      transform+_: scale(@min);
+    }
+
+    50% {
+      transform+_: scale(@max);
+    }
+  };
+
+  .factor(
+    @name,
+    if(isruleset(@anime), @anime, @prefab),
+    @duration
+  );
+}

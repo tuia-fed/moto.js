@@ -1,0 +1,8 @@
+import {tween, chain} from 'moto.js'
+
+===
+
+chain(
+  tween({from: {x: 0}, to: {x: 100}),
+  tween({from: {y: 0}, to: {y: 100})
+).start(v => console.log(v))

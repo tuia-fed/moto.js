@@ -1,0 +1,43 @@
+/*
+* name: 指定 keyframe 值，默认：anime-tada
+* duration: 动画执行时间(同：animation-duration)，默认：1s
+* min-angle: 最小旋转角度，默认：-3deg
+* max-angle: 最大放缩倍数，默认：3deg
+* min-scale: 最小放缩倍数，默认：.9
+* max-scale: 最大放缩倍数，默认：1.1
+* anime: 自定义 keyframes，默认：none
+*/
+
+.tada(@name: anime-tada, @duration: 1s,
+  @min-angle: -3deg, @max-angle: 3deg,
+  @min-scale: .9, @max-scale: 1.1,
+  @anime: none) {
+
+  @prefab: {
+    from {
+      transform: scale(1, 1);
+    }
+
+    10%, 20% {
+      transform: scale(@min-scale, @min-scale) rotate3d(0, 0, 1, @min-angle);
+    }
+
+    30%, 50%, 70%, 90% {
+      transform: scale(@max-scale, @max-scale) rotate3d(0, 0, 1, @max-angle);
+    }
+
+    40%, 60%, 80% {
+      transform: scale(@max-scale, @max-scale) rotate3d(0, 0, 1, @min-angle);
+    }
+
+    to {
+      transform: scale(1, 1);
+    }
+  };
+
+  .factor(
+    @name,
+    if(isruleset(@anime), @anime, @prefab),
+    @duration
+  );
+}
