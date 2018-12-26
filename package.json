@@ -1,14 +1,15 @@
 {
   "name": "@tuia/moto.js",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.3",
   "description": "A light motion library with curvilinear support.",
   "contributors": [
     "JetLu <i@lufei.so>",
     "Yelingxiao <1003772257@qq.com>"
   ],
   "keywords": [
-    "animation",
     "animate",
+    "animation",
+    "curve",
     "motion"
   ],
   "main": "dist/moto.min.js",
