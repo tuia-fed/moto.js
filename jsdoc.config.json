@@ -1,0 +1,10 @@
+{
+  "source": {
+    "include": ["src/core"],
+    "includePattern": ".+\\js$",
+    "excludePattern": "(node_modules|static|testbed|dist)"
+  },
+  "opts": {
+    "destination": "./dist/docs"
+  }
+}

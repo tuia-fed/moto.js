@@ -1,3 +1,11 @@
+/*
+* points:包含起始点(p0)，控制点(p1)和结束点(p2)的数组
+* duration:动画时长，单位 s，默认：1s
+* ease:时间函数，默认：t => t
+* yoyo:回荡次数，默认：0
+* loop:循环次数，默认：0
+*/
+
 export default function(option) {
   const
     {

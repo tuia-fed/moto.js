@@ -19,9 +19,6 @@ export default function (option) {
   points.unshift(points[0])
   points.push(points[points.length - 1])
 
-
-
-
   function start(option) {
     let id, update, complete, t = 0,
       stoped = false,
@@ -43,7 +40,6 @@ export default function (option) {
     }
 
     /* reduce size */
-
     function generate() {
       let i = 0
       return {

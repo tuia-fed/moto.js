@@ -1,12 +1,28 @@
-/*
-@param {object} - tween 函数参数
-@param {object|number} option.from - 初始状态：{x: 0, y: 0} 或者 0
-@param {object|number} option.to - 结束状态：{x: 10, y: 10} 或者 10
-@param {number} [option.duration=1] - 动画时长：单位s
-@param {function} [option.ease=t=>t] - 时间函数：t => t 或者 t => t ** 2
-@param {number} [option.yoyo=0] - 回荡次数：默认 0
-@param {number} [option.loop=0] - 循环次数：默认 0
-*/
+/**
+ * 通过给定初始状态、结束状态和过度时间来实现一个补间动画。
+ *
+ * @example
+ * // 创建一个补间动画
+ * moto.tween({
+ *   from: 0,
+ *   to: 1,
+ *   duration: .5
+ * }).start(v => {
+ *   console.log(v)
+ * })
+ * @memberof moto
+ * @func tween
+ * @param {object} option - tween 函数参数
+ * @param {object|number} option.from - 初始状态：{x: 0, y: 0} 或者 0
+ * @param {object|number} option.to - 结束状态：{x: 10, y: 10} 或者 10
+ * @param {number} [option.duration=1] - 动画时长：单位s
+ * @param {function} [option.ease=t=>t] - 时间函数：t => t 或者 t => t ** 2
+ * @param {number} [option.yoyo=0] - 回荡次数：默认 0
+ * @param {number} [option.loop=0] - 循环次数：默认 0
+ * @return {tween}
+ */
+
+
 
 export default function(option) {
   const
@@ -88,6 +104,20 @@ export default function(option) {
       }
     }
   }
-
-  return {start}
+  /**
+   * @interface Tween
+   */
+  return {
+    /**
+     * 开始 tween 动画，传入回调函数
+     * @func start
+     * @memberof Tween
+     * @instance
+     * @param {object|function} [option] - 传入一个函数或对象，为函数时同下面的 update
+     * @param {function} [option.update] - 每次更新状态时调用，参数为当前状态
+     * @param {function} [option.complete] - 动画执行完成时调用
+     * @return {Action}
+     */
+    start
+  }
 }

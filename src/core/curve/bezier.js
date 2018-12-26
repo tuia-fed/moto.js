@@ -1,3 +1,15 @@
+/**
+ * 实现二次贝塞尔曲线运动。
+ * @memberof moto.curve
+ * @func bezier
+ * @param {object} option - 参数对象
+ * @param {array.<Point>} option.points - 包含起始点(p0)，控制点(p1)和结束点(p2)的数组
+ * @param {number} [option.duration=1] - 动画时长，单位 s，默认：1s
+ * @param {function} [option.ease=t => t] - 时间函数，默认：t => t
+ * @param {number} [option.yoyo=0] - 回荡次数，默认：0
+ * @param {number} [option.loop=0] - 循环次数，默认：0
+ */
+
 export default function(option) {
   const
     {
