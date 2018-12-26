@@ -1,3 +1,6 @@
+/**
+ * @namespace moto
+ */
 import './polyfill'
 
 export tween from './tween'

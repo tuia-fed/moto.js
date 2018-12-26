@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
     "build": "rollup -c",
+    "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -r",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JetLu",
@@ -47,6 +48,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "highlight.js": "^9.13.1",
     "html-webpack-plugin": "^3.2.0",
+    "jsdoc": "^3.5.5",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "raw-loader": "^0.5.1",

@@ -18,7 +18,7 @@ export default {
       name: 'moto'
     },
     {
-      file: 'dist/moto.es.js',
+      file: 'dist/moto.esm.js',
       format: 'esm',
       name: 'moto'
     }
