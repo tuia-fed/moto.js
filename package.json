@@ -13,7 +13,7 @@
     "motion"
   ],
   "main": "dist/moto.min.js",
-  "module": "dist/moto.es.js",
+  "module": "dist/moto.esm.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tuia-fed/moto.js"

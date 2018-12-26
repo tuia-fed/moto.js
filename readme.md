@@ -4,4 +4,4 @@
 [![npm downloads](https://img.shields.io/npm/dm/@tuia/moto.js.svg?style=flat-square)](https://www.npmjs.com/package/@tuia/moto.js)
 
 ## Documents
-[API](http://xxx)
+[API](//tuia-fed.github.io/moto.js/index.html)
