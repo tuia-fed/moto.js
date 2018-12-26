@@ -1,6 +1,46 @@
 /**
  * @namespace moto
  */
+
+/**
+ * @interface Point
+ */
+/**
+ * @name x
+ * @type {number}
+ * @memberof Point
+ * @instance
+ */
+/**
+ * @name y
+ * @type {number}
+ * @memberof Point
+ * @instance
+ */
+
+/**
+ * @interface Action
+ */
+/**
+ * 暂停当前动画
+ * @func pause
+ * @memberof Action
+ * @instance
+ * @return {Action}
+ */
+/**
+ * 恢复当前动画
+ * @func resume
+ * @memberof Action
+ * @instance
+ * @return {Action}
+ */
+/**
+ * 停止当前动画，无法恢复
+ * @func stop
+ * @memberof Action
+ * @instance
+ */
 import './polyfill'
 
 export tween from './tween'

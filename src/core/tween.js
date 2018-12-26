@@ -10,7 +10,6 @@
  * }).start(v => {
  *   console.log(v)
  * })
- * @exports tween
  * @memberof moto
  * @func tween
  * @param {object} option - tween 函数参数
@@ -20,7 +19,7 @@
  * @param {function} [option.ease=t=>t] - 时间函数：t => t 或者 t => t ** 2
  * @param {number} [option.yoyo=0] - 回荡次数：默认 0
  * @param {number} [option.loop=0] - 循环次数：默认 0
- * @return {Tween}
+ * @return {tween}
  */
 
 
@@ -35,12 +34,6 @@ export default function(option) {
       loop = 0
     } = option
 
-  /**
-   * @typedef start
-   * @type {function}
-   * @param {object|function} option
-   * @return {object}
-   */
   function start(option) {
     const
       complex = isNaN(from),
@@ -91,12 +84,7 @@ export default function(option) {
         id = requestAnimationFrame(run)
       }
     }
-    /**
-     * @typedef {object} Action
-     * @property {function} stop - 停止动画
-     * @property {function} pause - 暂停动画
-     * @property {function} resume - 恢复动画
-     */
+
     return {
       stop() {
         stoped = true
@@ -117,8 +105,19 @@ export default function(option) {
     }
   }
   /**
-   * @typedef {object} Tween
-   * @method {start} start - 开始执行动画
+   * @interface Tween
    */
-  return {start}
+  return {
+    /**
+     * 开始 tween 动画，传入回调函数
+     * @func start
+     * @memberof Tween
+     * @instance
+     * @param {object|function} [option] - 传入一个函数或对象，为函数时同下面的 update
+     * @param {function} [option.update] - 每次更新状态时调用，参数为当前状态
+     * @param {function} [option.complete] - 动画执行完成时调用
+     * @return {Action}
+     */
+    start
+  }
 }
