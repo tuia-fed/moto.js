@@ -1,6 +1,6 @@
 {
   "name": "@tuia/moto.js",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "description": "A light motion library with curvilinear support.",
   "contributors": [
     "JetLu <i@lufei.so>",
@@ -20,8 +20,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
-    "build": "rollup -c",
-    "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -r readme.md",
+    "build": "rm -fr dist & rollup -c",
+    "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -R readme.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JetLu",
@@ -36,6 +36,7 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/runtime": "^7.2.0",
+    "@pixi/jsdoc-template": "^2.4.2",
     "ace-builds": "^1.4.2",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",

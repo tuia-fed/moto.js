@@ -1,10 +1,29 @@
-/*
-* points:包含起始点(p0)，控制点(p1)和结束点(p2)的数组
-* duration:动画时长，单位 s，默认：1s
-* ease:时间函数，默认：t => t
-* yoyo:回荡次数，默认：0
-* loop:循环次数，默认：0
-*/
+/**
+ * 实现一个三次贝塞尔曲线运动。
+ * @memberof moto.curve
+ * @func cubicBezier
+ * @param {object} option - 参数对象
+ * @param {array<Point>} option.points - 包含起始点(p0)，控制点(p1,p2)和结束点(p3)的数组
+ * @param {number} [option.duration=1] - 动画时长，单位 s，默认：1s
+ * @param {function} [option.ease=t => t] - 时间函数，默认：t => t
+ * @param {number} [option.yoyo=0] - 回荡次数，默认：0
+ * @param {number} [option.loop=0] - 循环次数，默认：0
+ * @return {Anime}
+ *
+ * @example
+ * import {curve} from '@tuia/moto.js'
+ *
+ * // 创建一个三次贝塞尔运动动画
+ *
+ * curve.cubicBezier({
+ *   points: [
+ *     {x: 0, y: 0},
+ *     {x: 100, y: 100},
+ *     {x: 200, y: 0},
+ *     {x: 300, y: 100}
+ *   ]
+ * }).start(v => console.log(v))
+ */
 
 export default function(option) {
   const
@@ -36,6 +55,8 @@ export default function(option) {
       t > 1 ? t = 1 : t < 0 ? t = 0 : 0
 
       update(bezier(points, ease(t)))
+
+      if (stoped || paused) return
 
       if ((forward === 1 && t === 1) ||
         (forward === -1 && t === 0)) {

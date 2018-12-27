@@ -3,6 +3,7 @@ export default [
   {path: '/entry', component: () => import('./entry.vue')},
   {path: '/less', component: () => import('./less.vue')},
   {path: '/js', component: () => import('./js.vue')},
+  {path: '/example', component: () => import('./example.vue')},
   {
     path: '/docs',
     component: () => import('./docs/entry.vue'),
