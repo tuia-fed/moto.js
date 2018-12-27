@@ -53,6 +53,8 @@ export default function(option) {
 
       update(bezier(points, ease(t)))
 
+      if (stoped || paused) return
+
       if ((forward === 1 && t === 1) ||
         (forward === -1 && t === 0)) {
         if (loop > count.loop) {

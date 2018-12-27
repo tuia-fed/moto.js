@@ -84,6 +84,8 @@ export default function (option) {
 
       update(catmullRom(p1, p2, p3, p4, t))
 
+      if (stoped || paused) return
+
       if (t === 1) {
         const {value, done} = iterator.next()
         if (done) complete && complete()
