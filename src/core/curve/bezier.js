@@ -3,11 +3,23 @@
  * @memberof moto.curve
  * @func bezier
  * @param {object} option - 参数对象
- * @param {array.<Point>} option.points - 包含起始点(p0)，控制点(p1)和结束点(p2)的数组
+ * @param {array<Point>} option.points - 包含起始点(p0)，控制点(p1)和结束点(p2)的数组
  * @param {number} [option.duration=1] - 动画时长，单位 s，默认：1s
  * @param {function} [option.ease=t => t] - 时间函数，默认：t => t
  * @param {number} [option.yoyo=0] - 回荡次数，默认：0
  * @param {number} [option.loop=0] - 循环次数，默认：0
+ * @return {Anime}
+ *
+ * @example
+ * // 创建一个二次贝塞尔运动动画
+ * import {curve} from '@tuia/moto.js'
+ * curve.bezier({
+ *   points: [
+ *     {x: 0, y: 0},
+ *     {x: 100, y: 100},
+ *     {x: 200, y: 0}
+ *   ]
+ * }).start(v => console.log(v))
  */
 
 export default function(option) {
@@ -40,6 +52,8 @@ export default function(option) {
       t > 1 ? t = 1 : t < 0 ? t = 0 : null
 
       update(bezier(points, ease(t)))
+
+      if (stoped || paused) return
 
       if ((forward === 1 && t === 1) ||
         (forward === -1 && t === 0)) {

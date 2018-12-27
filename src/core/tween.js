@@ -1,15 +1,6 @@
 /**
  * 通过给定初始状态、结束状态和过度时间来实现一个补间动画。
  *
- * @example
- * // 创建一个补间动画
- * moto.tween({
- *   from: 0,
- *   to: 1,
- *   duration: .5
- * }).start(v => {
- *   console.log(v)
- * })
  * @memberof moto
  * @func tween
  * @param {object} option - tween 函数参数
@@ -19,7 +10,20 @@
  * @param {function} [option.ease=t=>t] - 时间函数：t => t 或者 t => t ** 2
  * @param {number} [option.yoyo=0] - 回荡次数：默认 0
  * @param {number} [option.loop=0] - 循环次数：默认 0
- * @return {tween}
+ * @return {Anime}
+ *
+ * @example
+ *
+ * import {tween} from '@tuia/moto.js'
+ *
+ * // 创建一个补间动画
+ * tween({
+ *   from: 0,
+ *   to: 1,
+ *   duration: .5
+ * }).start(v => {
+ *   console.log(v)
+ * })
  */
 
 
@@ -66,6 +70,8 @@ export default function(option) {
 
       update(result)
 
+      if (stoped || paused) return
+
       if ((forward === 1 && t === 1) ||
         (forward === -1 && t === 0)) {
         if (loop > count.loop) {
@@ -104,20 +110,6 @@ export default function(option) {
       }
     }
   }
-  /**
-   * @interface Tween
-   */
-  return {
-    /**
-     * 开始 tween 动画，传入回调函数
-     * @func start
-     * @memberof Tween
-     * @instance
-     * @param {object|function} [option] - 传入一个函数或对象，为函数时同下面的 update
-     * @param {function} [option.update] - 每次更新状态时调用，参数为当前状态
-     * @param {function} [option.complete] - 动画执行完成时调用
-     * @return {Action}
-     */
-    start
-  }
+
+  return {start}
 }

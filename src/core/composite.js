@@ -1,3 +1,23 @@
+/**
+ * 同时执行多个动画。
+ * @example
+ *
+ * import {composite, tween} from '@tuia/moto.js'
+ *
+ * // 放大后在位移
+ * composite({
+ *   scale: tween({from: 1, to: 2}),
+ *   x: tween({from: 0, to: 100})
+ * }).start(v => {
+ *   console.log(v.scale, v.x)
+ * })
+ *
+ * @memberof moto
+ * @func composite
+ * @param {object<string, Anime>} anime - 多个动画实例
+ * @return {Anime}
+ */
+
 export default function(anime) {
   const keys = Object.keys(anime)
 
