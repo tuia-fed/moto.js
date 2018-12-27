@@ -1,9 +1,24 @@
-/*
-* @param {object} option
-* @param {array} option.points - 路径点数组
-* @param {number} [option.speed=10] - 移动速度
-* @param {boolean} [option.loop] - 是否自动闭合路径
-*/
+/**
+ * 实现一个 Catmull Rom 曲线运动。
+ * @memberof moto.curve
+ * @func catmullRom
+ * @param {object} option - 参数对象
+ * @param {array<Point>} option.points - 路径点数组
+ * @param {number} [option.speed=10] - 移动速度
+ * @param {boolean} [option.loop] - 是否自动闭合路径
+ * @return {Anime}
+ *
+ * @example
+ * // 创建一个 Catmull Rom 运动动画
+ * import {curve} from '@tuia/moto.js'
+ * curve.catmullRom({
+ *   points: [
+ *     {x: 0, y: 0},
+ *     {x: 100, y: 100},
+ *     {x: 200, y: 0}
+ *   ]
+ * }).start(v => console.log(v))
+ */
 export default function (option) {
   const {points, speed = 10, loop = false} = option
 

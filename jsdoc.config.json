@@ -1,10 +1,32 @@
 {
+  "tags": {
+    "allowUnknownTags": true
+  },
+
+  "plugins": [
+    "plugins/markdown"
+  ],
+
   "source": {
     "include": ["src/core"],
-    "includePattern": ".+\\js$",
+    "includePattern": ".js$",
     "excludePattern": "(node_modules|static|testbed|dist)"
   },
+
+  "templates": {
+    "applicationName": "Moto.js",
+    "disableSort": false,
+    "collapse": false,
+    "linenums": true,
+    "meta": {
+      "title": "Moto.js",
+      "description": "A light motion library with curvilinear support."
+    }
+  },
   "opts": {
-    "destination": "./dist/docs"
+    "encoding": "utf8",
+    "destination": "dist/docs",
+    "template": "node_modules/@pixi/jsdoc-template",
+    "recurse": true
   }
 }
