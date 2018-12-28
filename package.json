@@ -1,6 +1,6 @@
 {
   "name": "@tuia/moto.js",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.5",
   "description": "A light motion library with curvilinear support.",
   "contributors": [
     "JetLu <i@lufei.so>",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
-    "build": "rollup -c",
+    "build": "rm -fr dist & rollup -c",
     "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -R readme.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
