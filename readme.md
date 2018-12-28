@@ -46,3 +46,46 @@ curve.bezier({
   target.parentElement.appendChild(dot)
 })
 ```
+
+### cubicBezier
+![cubicBezier](https://yun.duiba.com.cn/moto/bezier.cubic.gif)
+```js
+import {curve} from '@tuia/moto.js'
+
+curve.cubicBezier({
+  points: [
+    {x: 50, y: 50},
+    {x: 100, y: 150},
+    {x: 300, y: 50},
+    {x: 350, y: 150}
+  ]
+}).start(v => {
+  const dot = document.createElement('i')
+  dot.classList.add('dot')
+  dot.style.top = target.style.top = `${v.y}px`
+  dot.style.left = target.style.left = `${v.x}px`
+  target.parentElement.appendChild(dot)
+})
+```
+
+### catmullRom
+![catmullRom](https://yun.duiba.com.cn/moto/catmull-rom.gif)
+```js
+import {curve} from '@tuia/moto.js'
+
+curve.catmullRom({
+  points: [
+    {x: 50, y: 50},
+    {x: 100, y: 150},
+    {x: 200, y: 100},
+    {x: 300, y: 50},
+    {x: 350, y: 150}
+  ]
+}).start(v => {
+  const dot = document.createElement('i')
+  dot.classList.add('dot')
+  dot.style.top = target.style.top = `${v.y}px`
+  dot.style.left = target.style.left = `${v.x}px`
+  target.parentElement.appendChild(dot)
+})
+```
