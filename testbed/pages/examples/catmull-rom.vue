@@ -48,8 +48,6 @@
         dot.style.left = target.style.left = `${v.x}px`
         target.parentElement.appendChild(dot)
       })
-      anime.pause()
-      setTimeout(() => anime.resume(), 1e3)
     }
   }
 </script>

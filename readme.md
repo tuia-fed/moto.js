@@ -26,6 +26,61 @@ tween({
 })
 ```
 
+### chain
+![chain](https://yun.duiba.com.cn/moto/chain.gif)
+```js
+import {chain, tween} from '@tuia/moto.js'
+
+chain(
+  tween({
+    from: {x: 0, radius: 25},
+    to: {x: 200, radius: 0}
+  }),
+  tween({
+    from: {x: 0, radius: 0, g: 204, b: 51},
+    to: {x: -200, radius: 25, g: 51, b: 204}
+  })
+).start(v => {
+  let target = v.g  ? targetA : targetB
+  target.css({
+    transform: `translateX(${v.x}px)`,
+    borderRadius: `${v.radius}px`,
+    backgroundColor: v.g ? `rgb(255, ${v.g}, ${v.b})` : '#fc3'
+  })
+})
+```
+
+### composite
+![composite](https://yun.duiba.com.cn/moto/composite.gif)
+```js
+import {curve, composite} from '@tuia/moto.js'
+
+composite({
+  position: curve.cubicBezier({
+    points: this.points,
+    duration: .6
+  }),
+
+  color: tween({
+    from: {g: 204, b: 51},
+    to: {g: 51, b: 204},
+    duration: .6
+  })
+}).start(v => {
+  const
+    target = this.$refs.target,
+    dot = document.createElement('i')
+  dot.classList.add('dot')
+  target.css({
+    backgroundColor: `rgb(255, ${v.color.g}, ${v.color.b})`
+  })
+  dot.style.top = target.style.top = `${v.position.y}px`
+  dot.style.left = target.style.left = `${v.position.x}px`
+
+  target.parentElement.appendChild(dot)
+})
+```
+
 ### bezier
 ![bezier](https://yun.duiba.com.cn/moto/bezier.1.gif)
 ```js
@@ -89,3 +144,4 @@ curve.catmullRom({
   target.parentElement.appendChild(dot)
 })
 ```
+
