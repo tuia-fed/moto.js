@@ -3,7 +3,6 @@ export default [
   {path: '/entry', component: () => import('./entry.vue')},
   {path: '/less', component: () => import('./less.vue')},
   {path: '/js', component: () => import('./js.vue')},
-  {path: '/example', component: () => import('./example.vue')},
   {
     path: '/docs',
     component: () => import('./docs/entry.vue'),
@@ -29,7 +28,9 @@ export default [
       {path: 'tween', component: () => import('./examples/tween.vue')},
       {path: 'bezier', component: () => import('./examples/bezier.vue')},
       {path: 'cubic-bezier', component: () => import('./examples/bezier.cubic.vue')},
-      {path: 'catmull-rom', component: () => import('./examples/catmull-rom.vue')}
+      {path: 'catmull-rom', component: () => import('./examples/catmull-rom.vue')},
+      {path: 'chain', component: () => import('./examples/chain.vue')},
+      {path: 'composite', component: () => import('./examples/composite.vue')}
     ]
   }
 ]

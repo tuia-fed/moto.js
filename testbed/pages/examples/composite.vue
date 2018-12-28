@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import {curve} from 'core'
+  import {curve, composite, tween} from 'core'
   export default {
     data() {
       return {
@@ -26,9 +26,17 @@
           this.style[key] = option[key]
         }
       }
-      const anime = curve.cubicBezier({
-        points: this.points,
-        duration: .6
+      const anime = composite({
+        position: curve.cubicBezier({
+          points: this.points,
+          duration: .6
+        }),
+
+        color: tween({
+          from: {g: 204, b: 51},
+          to: {g: 51, b: 204},
+          duration: .6
+        })
       }).start(v => {
         const
           target = this.$refs.target,
@@ -43,10 +51,16 @@
           borderRadius: '3px',
           display: 'block'
         })
-        dot.style.top = target.style.top = `${v.y}px`
-        dot.style.left = target.style.left = `${v.x}px`
+        target.css({
+          backgroundColor: `rgb(255, ${v.color.g}, ${v.color.b})`
+        })
+        dot.style.top = target.style.top = `${v.position.y}px`
+        dot.style.left = target.style.left = `${v.position.x}px`
+
         target.parentElement.appendChild(dot)
       })
+      anime.pause()
+      setTimeout(() => anime.resume(), 1e3)
     }
   }
 </script>
@@ -76,7 +90,6 @@
     height: @size;
     border-radius: @size / 2;
     background-color: #fc3;
-    opacity: .5;
     position: absolute;
     transform: translate(-50%, -50%);
   }
