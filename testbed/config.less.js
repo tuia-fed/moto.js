@@ -41,6 +41,19 @@ export default [
   },
 
   {
+    name: 'jump',
+    options: [
+      {key: 'duration', value: 1, range: [0, 3], step: .1},
+      {key: 'height', value: 100, range: [0, 100], step: 1},
+      {key: 'yoyo', value: 3, range: [0, 10]}
+    ],
+    format() {
+      const [duration, height, yoyo] = this.options
+      return `.jump(anime-jump, ${duration.value}s, ${height.value}px, ${yoyo.value})`
+    }
+  },
+
+  {
     name: 'tada',
     options: [
       {key: 'duration', value: 1, range: [0, 5], step: .5},
