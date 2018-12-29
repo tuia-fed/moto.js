@@ -5,3 +5,5 @@ static
 testbed
 webpack.build.js
 webpack.dev.js
+jsdoc.config.json
+rollup.config.js

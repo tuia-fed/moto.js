@@ -16,11 +16,6 @@ export default {
       file: 'dist/moto.min.js',
       format: 'umd',
       name: 'moto'
-    },
-    {
-      file: 'dist/moto.esm.js',
-      format: 'esm',
-      name: 'moto'
     }
   ]
 }

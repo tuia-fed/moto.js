@@ -1,6 +1,6 @@
 {
   "name": "@tuia/moto.js",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.8",
   "description": "A light motion library with curvilinear support.",
   "contributors": [
     "JetLu <i@lufei.so>",
@@ -13,20 +13,22 @@
     "motion"
   ],
   "main": "dist/moto.min.js",
-  "module": "dist/moto.esm.js",
+  "module": "dist/core/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/tuia-fed/moto.js"
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
-    "build": "rm -fr dist & rollup -c",
+    "build": "rm -fr dist & npm run compile & rollup -c",
     "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -R readme.md",
+    "compile": "babel --config .babelrc src/core -d dist/core",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JetLu",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
