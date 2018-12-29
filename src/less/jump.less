@@ -1,25 +1,21 @@
 /*
-* height: 跳跃高度
-* duration: 动画执行时间(同：animation-duration)，默认：1s
-* yoyo: 弹跳次数，默认：3
-* timing: 时间函数(同：animation-timing-function)，默认：linear
-* delay: 延时执行(同：animation-delay)，默认：0
-* count: 动画执行次数(同：animation-iteration-count)，默认：1
-* direction: 动画执行顺序(同：animation-direction)，默认：normal
-* mode: 动画模式(同：animation-fill-mode)，默认：none
-* state: 动画状态(同：animation-play-state)，默认：running
 * name: 指定 keyframe 值，默认：anime-jump
+* duration: 动画执行时间(同：animation-duration)，默认：1s
+* height: 跳跃高度，默认：100px，方向向上
+* yoyo: 回荡次数，默认：3
+* anime: 自定义 keframes， 默认：none
+* 可通过 animation-* 属性配置其余项。
 */
 
-.jump(@name: anime-jump,@height, @duration: 1s, @yoyo: 3,
-  @timing: linear, @delay: 0s, @count: 1,
-  @direction: normal, @mode: none, @state: running) {
-  animation: @name @duration @timing @delay @count @direction @mode @state;
+.jump(@name: anime-jump, @duration: 1s,
+  @height: 100px, @yoyo: 3,
+  @anime: none) {
 
   @total: @yoyo * 2 + 1;
-  @keyframes @name {
+
+  @prefab: {
     .loop;
-  }
+  };
 
   .loop(@index: 0) when (@total > @index) {
     @progress: percentage(@index / @total);
@@ -32,4 +28,10 @@
     }
     .loop(@index + 1);
   }
+
+  .factor(
+    @name,
+    if(isruleset(@anime), @anime, @prefab),
+    @duration
+  );
 }
