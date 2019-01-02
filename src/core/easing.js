@@ -146,3 +146,22 @@ export function easeOutQuint(t) {
 export function easeInOutQuint(t) {
   return t < .5 ? 16 * t ** 5 : 1 + 16 * (--t) * t ** 4
 }
+
+/**
+ * cubicBezier
+ * @func cubicBezier
+ * @memberof moto.easing
+ * @param {number} y1 - 控制点 p1 的 y 轴坐标
+ * @param {number} y2 - 控制点 p2 的 y 轴坐标
+ * @return {function} - 时间函数回调
+ */
+export function cubicBezier(y1, y2) {
+  return t => calc(0, y1, y2, 1, t)
+}
+
+function calc(w, x, y, z, t) {
+  return (1 - t) ** 3 * w +
+    3 * (1 - t) ** 2 * t * x +
+    3 * (1 - t) * t ** 2 * y +
+    t ** 3 * z
+}

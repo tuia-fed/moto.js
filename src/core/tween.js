@@ -31,31 +31,40 @@
 export default function(option) {
   const
     {
-      from, to,
       duration = 1,
       ease = t => t,
       yoyo = 0,
       loop = 0
-    } = option
+    } = option,
+    complex = isNaN(option.from)
+
+    let delta, from, to, result
+
+    if (complex) {
+      from = {}
+      to = {}
+      delta = {}
+      result = {}
+      for (let key in option.from) {
+        from[key] = option.from[key]
+        to[key] = option.to[key]
+        delta[key] = to[key] - from[key]
+      }
+    } else delta = to - from
 
   function start(option) {
-    const
-      complex = isNaN(from),
-      count = {
-        yoyo: 0,
-        loop: 0
-      }
+    const count = {
+      yoyo: 0,
+      loop: 0
+    }
 
     let
-      update, complete,
-      id, delta, result,
-      t = 0, forward = 1,
-      stoped = false, paused = false,
+      update, complete, id,
+      t = 0,
+      forward = 1,
+      stoped = false,
+      paused = false,
       finished = false
-
-    complex ? (delta = {}, result = {}, Object.keys(from).forEach(key => {
-      delta[key] = to[key] - from[key]
-    })) : delta = to - from
 
     option instanceof Function ? update = option : {update, complete} = option
 
