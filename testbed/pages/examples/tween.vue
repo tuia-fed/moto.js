@@ -5,12 +5,14 @@
 </template>
 
 <script>
-  import {tween} from 'core'
+  import {tween, easing} from 'core'
   export default {
     mounted() {
       tween({
         from: {x: 0, radius: 0},
-        to: {x: 200, radius: 25}
+        to: {x: 200, radius: 25},
+        duration: 1,
+        ease: easing.cubicBezier(.66, .28)
       }).start(v => {
         const target = this.$refs.target
         target.style.transform = `translateX(${v.x}px)`
