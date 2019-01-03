@@ -50,7 +50,10 @@ export default function(option) {
         to[key] = option.to[key]
         delta[key] = to[key] - from[key]
       }
-    } else delta = to - from
+    } else {
+      ({from, to} = option)
+      delta = to - from
+    }
 
   function start(option) {
     const count = {
