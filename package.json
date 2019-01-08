@@ -1,6 +1,6 @@
 {
   "name": "@tuia/moto.js",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "A light motion library with curvilinear support.",
   "contributors": [
     "JetLu <i@lufei.so>",
@@ -14,6 +14,7 @@
   ],
   "main": "dist/moto.min.js",
   "module": "dist/core/index.js",
+  "types": "moto.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/tuia-fed/moto.js"
@@ -41,7 +42,7 @@
     "@pixi/jsdoc-template": "^2.4.2",
     "ace-builds": "^1.4.2",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.1",
     "css-loader": "^2.1.0",
@@ -54,20 +55,20 @@
     "less-loader": "^4.1.0",
     "raw-loader": "^1.0.0",
     "rollup": "^1.0.0",
-    "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-babel": "^4.2.0",
     "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "vue": "^2.5.21",
-    "vue-loader": "^15.4.2",
+    "vue-loader": "^15.5.0",
     "vue-router": "^3.0.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.21",
     "vuex": "^3.0.1",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {}
