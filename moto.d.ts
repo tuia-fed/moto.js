@@ -1,6 +1,6 @@
-export function tween(TweenOption): Anime
+export function tween(option: TweenOption): Anime
 export function composite(option: Map<string, Anime>): Anime
-export function chain(...animes: Anime): Anime
+export function chain(...animes: Anime[]): Anime
 
 export namespace curve {
   /**
@@ -45,7 +45,7 @@ interface TweenOption {
   /**
    * 动画时长，默认：1s
    */
-  duration?: number = 1
+  duration?: number
   /**
    * 时间函数，默认：t => t
    */
@@ -53,16 +53,25 @@ interface TweenOption {
   /**
    * 回荡次数，默认：0
    */
-  yoyo?: number = 0
+  yoyo?: number
   /**
    * 循环次数，默认：0
    */
-  loop?: number = 0
+  loop?: number
 }
 
 interface Action {
+  /**
+   * 停止动画，无法恢复
+   */
   stop(): void
+  /**
+   * 暂停动画，返回 Action
+   */
   pause(): Action
+  /**
+   * 恢复动画，返回 Action
+   */
   resume(): Action
 }
 
@@ -106,11 +115,11 @@ interface CatmullRomOption {
   /**
    * 移动速度，默认：10
    */
-  speed?: number = 10,
+  speed?: number
   /**
    * 自动闭合路径，默认：false
    */
-  loop?: boolean = false
+  loop?: boolean
 }
 
 interface BezierOption {
@@ -121,7 +130,7 @@ interface BezierOption {
   /**
    * 动画时长，默认：1s
    */
-  duration?: number = 1
+  duration?: number
   /**
    * 时间函数，默认：t => t
    */
@@ -129,9 +138,9 @@ interface BezierOption {
   /**
    * 回荡次数，默认：0
    */
-  yoyo?: number = 0
+  yoyo?: number
   /**
    * 循环次数，默认：0
    */
-  loop?: number = 0
+  loop?: number
 }
