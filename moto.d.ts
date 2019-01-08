@@ -2,6 +2,25 @@ export function tween(option: TweenOption): Anime
 export function composite(option: Map<string, Anime>): Anime
 export function chain(...animes: Anime[]): Anime
 
+export namespace easing {
+  export function linear(t: number): number
+  export function easeInQuad(t: number): number
+  export function easeOutQuad(t: number): number
+  export function easeInOutQuad(t: number): number
+  export function easeInCubic(t: number): number
+  export function easeOutCubic(t: number): number
+  export function easeInOutCubic(t: number): number
+  export function easeInQuint(t: number): number
+  export function easeOutQuint(t: number): number
+  export function easeInOutQuint(t: number): number
+  /**
+   * 三次贝塞尔的两个控制点
+   * @param y1 - 范围: 0 - 1
+   * @param y2 - 范围: 0 - 1
+   */
+  export function cubicBezier(y1: number, y2: number): (t: number) => number
+}
+
 export namespace curve {
   /**
    *
@@ -75,7 +94,7 @@ interface Action {
   resume(): Action
 }
 
-interface AnimeCB {
+interface AnimeCallback {
   /**
    * 每帧回调
    * @param v - 当前动画状态
@@ -99,7 +118,7 @@ interface Anime {
    * @param option.update
    * @param option.complete
    */
-  start(option: AnimeCB): Action
+  start(option: AnimeCallback): Action
 }
 
 interface Point {
