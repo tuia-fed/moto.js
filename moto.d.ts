@@ -1,5 +1,18 @@
+/**
+ * 创建一个补间动画
+ * @param option - 补间动画参数
+ */
 export function tween(option: TweenOption): Anime
+/**
+ * 创建一个复合动画
+ * @param option - 复合动画参数
+ */
 export function composite(option: Map<string, Anime>): Anime
+
+/**
+ * 创建一个链式动画
+ * @param animes - 一个或多个动画实例
+ */
 export function chain(...animes: Anime[]): Anime
 
 export namespace easing {

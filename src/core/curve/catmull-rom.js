@@ -5,7 +5,7 @@
  * @param {object} option - 参数对象
  * @param {array<Point>} option.points - 路径点数组
  * @param {number} [option.speed=10] - 移动速度
- * @param {boolean} [option.loop] - 是否自动闭合路径
+ * @param {boolean} [option.loop=false] - 是否自动闭合路径
  * @return {Anime}
  *
  * @example
