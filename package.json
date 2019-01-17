@@ -20,10 +20,8 @@
     "url": "https://github.com/tuia-fed/moto.js"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.js --host 0.0.0.0",
-    "build": "rm -fr dist & npm run compile & rollup -c",
+    "build": "rm -fr dist & rollup -c",
     "doc": "rm -fr dist/docs/ & jsdoc -c jsdoc.config.json -R readme.md",
-    "compile": "babel --config .babelrc src/core -d dist/core",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JetLu",
