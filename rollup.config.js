@@ -15,7 +15,13 @@ export default {
     {
       file: 'dist/moto.min.js',
       format: 'umd',
-      name: 'moto'
+      name: 'moto',
+      sourcemap: true
+    },
+    {
+      file: 'dist/moto.esm.js',
+      format: 'esm',
+      sourcemap: true
     }
   ]
 }

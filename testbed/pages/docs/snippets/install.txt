@@ -1,5 +1,0 @@
-npm i @tuia/moto.js
-
-===
-
-<script src="//yun.duiba.com.cn/moto/moto.min.js"></script>
