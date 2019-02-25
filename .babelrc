@@ -3,7 +3,7 @@
     ["@babel/env", {
       "useBuiltIns": "usage",
       "modules": "false",
-      "targets": {"node": 4}
+      "targets": {"node": 8, "ios": 8, "android": 4}
     }]
   ],
 

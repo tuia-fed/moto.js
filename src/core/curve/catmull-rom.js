@@ -19,6 +19,9 @@
  *   ]
  * }).start(v => console.log(v))
  */
+
+import {ticker} from '../ticker'
+
 export default function (option) {
   const {points, speed = 10, loop = false} = option
 
@@ -77,7 +80,6 @@ export default function (option) {
     const iterator = generate()
     let {p1, p2, p3, p4, dt} = iterator.next().value
 
-    run()
     function run() {
       t += dt
       t > 1 ? t = 1 : null
@@ -88,30 +90,31 @@ export default function (option) {
 
       if (t === 1) {
         const {value, done} = iterator.next()
-        if (done) complete && complete()
-        else {
+        if (done) {
+          ticker.remove(run)
+          complete && complete()
+        } else {
           ({p1, p2, p3, p4, dt} = value)
           t = 0
-          id = requestAnimationFrame(run)
         }
-      } else id = requestAnimationFrame(run)
+      }
     }
 
     return {
       stop() {
         stoped = true
-        cancelAnimationFrame(id)
+        ticker.remove(run)
       },
 
       pause() {
         if (stoped || finished) return
         paused = true
-        cancelAnimationFrame(id)
+        ticker.remove(run)
         return this
       },
 
       resume() {
-        paused && (paused = false, run())
+        paused && (paused = false, ticker.add(run))
         return this
       }
     }
