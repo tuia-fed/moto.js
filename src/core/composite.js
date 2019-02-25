@@ -19,10 +19,13 @@
  */
 
 export default function(anime) {
-  const keys = Object.keys(anime)
+  const keys = []
+
+  for (const key in anime) keys.push(key)
 
   function start(option) {
     const result = {}
+
     let update, complete,
       total = {start: 0, end: 0},
       stoped = false,
@@ -31,9 +34,12 @@ export default function(anime) {
 
     option instanceof Function ? update = option : {update, complete} = option
 
-    const actions = keys.map(key => {
+    const actions = []
+
+    for (let i = 0, key; i < keys.length; i++) {
       total.start++
-      return anime[key].start({
+      key = keys[i]
+      actions.push(anime[key].start({
         update: v => {
           result[key] = v
           total.start === keys.length && update(result)
@@ -43,26 +49,26 @@ export default function(anime) {
           total.end++
           total.end === keys.length && complete && complete()
         }
-      })
-    })
+      }))
+    }
 
     return {
       stop() {
         stoped = true
-        actions.forEach(action => action.stop())
+        for (let i = 0; i < actions.length; i++) actions[i].stop()
       },
 
       pause() {
         if (stoped || finished) return
         paused = true
-        actions.forEach(action => action.pause())
+        for (let i = 0; i < actions.length; i++) actions[i].pause()
         return this
       },
 
       resume() {
         if (!paused) return this
         paused = false
-        actions.forEach(action => action.resume())
+        for (let i = 0; i < actions.length; i++) actions[i].resume()
         return
       }
     }

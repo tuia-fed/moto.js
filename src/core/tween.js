@@ -26,6 +26,7 @@
  * })
  */
 
+import {ticker} from './ticker'
 
 
 export default function(option) {
@@ -71,9 +72,8 @@ export default function(option) {
 
     option instanceof Function ? update = option : {update, complete} = option
 
-    run()
-    function run() {
-      t += (1 / 60 / duration) * forward
+    function run(dt) {
+      t += (dt / 1e3 / duration) * forward
       t > 1 ? t = 1 : t < 0 ? t = 0 : null
 
       if (complex) for (const key in delta) {
@@ -89,35 +89,34 @@ export default function(option) {
         if (loop > count.loop) {
           count.loop++
           t = 0
-          id = requestAnimationFrame(run)
         } else if (yoyo > count.yoyo) {
           count.yoyo++
           forward *= -1
-          id = requestAnimationFrame(run)
         } else {
           finished = true
+          ticker.remove(run)
           complete && complete()
         }
-      } else {
-        id = requestAnimationFrame(run)
       }
     }
+
+    ticker.add(run)
 
     return {
       stop() {
         stoped = true
-        cancelAnimationFrame(id)
+        ticker.remove(run)
       },
 
       pause() {
         if (stoped || finished) return this
         paused = true
-        cancelAnimationFrame(id)
+        ticker.remove(run)
         return this
       },
 
       resume() {
-        paused && (paused = false, run())
+        paused && (paused = false, ticker.add(run))
         return this
       }
     }
