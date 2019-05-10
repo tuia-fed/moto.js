@@ -1,11 +1,11 @@
 let _requestAnimationFrame, _cancelAnimationFrame
 
-if (typeof module !== 'undefined' &&
-  typeof exports !== 'undefined') {
+if (typeof window === 'undefined') {
   /* for node.js */
   _requestAnimationFrame = requestAnimationFrame || setImmediate
   _cancelAnimationFrame = cancelAnimationFrame || clearImmediate
 } else {
+  /* for 浏览器 wx小程序 */
   _requestAnimationFrame = requestAnimationFrame || setTimeout
   _cancelAnimationFrame = cancelAnimationFrame || clearTimeout
 }
