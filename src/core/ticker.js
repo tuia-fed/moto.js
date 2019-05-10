@@ -2,8 +2,8 @@ let _requestAnimationFrame, _cancelAnimationFrame
 
 if (typeof window === 'undefined') {
   /* for node.js */
-  _requestAnimationFrame = requestAnimationFrame || setImmediate
-  _cancelAnimationFrame = cancelAnimationFrame || clearImmediate
+  _requestAnimationFrame  = setImmediate
+  _cancelAnimationFrame = clearImmediate
 } else {
   /* for 浏览器 wx小程序 */
   _requestAnimationFrame = requestAnimationFrame || setTimeout
