@@ -26,6 +26,8 @@ function Ticker() {
 
     for (let i = 0; i < this.list.length; i++) this.list[i](dt)
 
+    if (!this.started) return
+
     this.id = _requestAnimationFrame(this.loop.bind(this))
   }
 
