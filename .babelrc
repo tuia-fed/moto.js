@@ -3,7 +3,7 @@
     ["@babel/env", {
       "corejs": 2,
       "useBuiltIns": "usage",
-      "modules": "false",
+      "modules": false,
       "targets": {"node": 8, "ios": 8, "android": 4}
     }]
   ],
