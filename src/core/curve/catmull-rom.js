@@ -100,6 +100,8 @@ export default function (option) {
       }
     }
 
+    ticker.add(run)
+
     return {
       stop() {
         stoped = true
